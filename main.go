@@ -14,14 +14,9 @@ import (
 func main() {
 	var dir string
 
-	flag.StringVar(&dir, "directory", "", "Directory to walk")
+	flag.StringVar(&dir, "directory", ".", "Directory to walk")
 
 	flag.Parse()
-
-	if len(dir) == 0 {
-		fmt.Println("No directory set. Exiting")
-		os.Exit(0)
-	}
 
 	err := filepath.Walk(dir, func(path string, info fs.FileInfo, err error) error {
 		if err != nil {
